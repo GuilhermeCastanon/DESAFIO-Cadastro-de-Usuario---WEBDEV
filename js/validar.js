@@ -28,7 +28,7 @@ function validarNome(e){
     console.log(e); //impressão em console do objeto evento e
     console.log(e.target.value); //impressão em console do valor do objeto 'nome' que originou o evento   
     var nameLenght = e.target.value.trim().length;
-    if( (e.target.value.trim().match(regexNome)==null) || nameLenght < 6 ){
+    if( (e.target.value.trim().match(regexNome)==null) || (nameLenght < 6) || nameLenght > 30){
         //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputNameHelp
         nomeHelp.textContent = "Formato de nome inválido"; 
         nomeHelp.style.color="red";
@@ -81,14 +81,14 @@ function validarSenha(e){
     // Verificar se a senha contém nomeDigitado ou anoDigitado
     var contemNomeOuAno = regexNomeOuAno.test(senha);
 
-    console.log("Contém Nome ou Ano:", contemNomeOuAno);
-    console.log("Tamanhoinvalido:", tamanhoInvalido);
-    console.log("Nao Possui caractere especial:", NaoPossuiCaractereEspecial);
-    console.log("Nao Possui numero:", NaoPossuiNumero);
-    console.log("Nao Possui letra:", NaoPossuiLetra);
+    console.log("TESTE SENHA Contém Nome ou Ano:", contemNomeOuAno);
+    console.log("TESTE SENHA Tamanhoinvalido:", tamanhoInvalido);
+    console.log("TESTE SENHA Nao Possui caractere especial:", NaoPossuiCaractereEspecial);
+    console.log("TESTE SENHA Nao Possui numero:", NaoPossuiNumero);
+    console.log("TESTE SENHA Nao Possui letra:", NaoPossuiLetra);
 
-    console.log("Ano Digitado:", anoDigitado);
-    console.log("Nome Digitado:", nomeDigitado);
+    console.log("TESTE SENHA Ano Digitado:", anoDigitado);
+    console.log("TESTE SENHA Nome Digitado:", nomeDigitado);
 
     if (tamanhoInvalido || NaoPossuiCaractereEspecial || NaoPossuiNumero || NaoPossuiLetra || contemNomeOuAno) {
         //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputSenhaHelp
@@ -120,10 +120,12 @@ function validarSenha(e){
         // Determinar o nível de segurança da senha
         if (comprimento <= 8 && possuiCaractereEspecial && possuiNumero) {
             senhaHelp.textContent = "fraca";
+            senhaHelp.style.color="orange";
             
             
         } else if (comprimento > 8 && comprimento <= 12 && possuiCaractereEspecial && possuiNumero && possuiLetraMaiuscula) {
             senhaHelp.textContent = "moderada";
+            senhaHelp.style.color="yellow";
         } else if (comprimento > 12 && possuiCaractereEspecial && possuiNumero && possuiLetraMaiuscula) {
             // Verificar se há mais de um caractere especial, número e letra maiúscula
             var qtdCaracteresEspeciais = (senha.match(regexCaractereEspecial) || []).length;
@@ -136,9 +138,14 @@ function validarSenha(e){
 
             if (qtdCaracteresEspeciais > 1 && qtdNumeros > 1 && qtdLetrasMaiusculas > 1) {
                 senhaHelp.textContent = "forte";
+                senhaHelp.style.color="green";
             } else{
                 senhaHelp.textContent = "moderada";
+                senhaHelp.style.color="yellow";
             }
+        } else{
+            senhaHelp.textContent = "fraca";
+            senhaHelp.style.color="orange";
         }
 
     
@@ -153,7 +160,7 @@ Uma vez o foco seja mudado, será chamada a função validarNome*/
 
 ano.addEventListener('focusout', () => {
     //declaração da expressão regular para definir o formato de um ano válido
-    const regexAno = /^[0-9]{4}$/;
+    const regexAno = /^[0-9]+$/;
     //tirar (trim) espaços em branco antes e depois da string
     const anoTrimado = ano.value.trim();
     console.log(ano.value);
@@ -168,14 +175,14 @@ ano.addEventListener('focusout', () => {
         var date = new Date();
         //obtem o ano atual
         
-        if( parseInt(anoTrimado) > 2022 ){
+        if( parseInt(anoTrimado) > 2024 ){
              //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputYearHelp
-            anoHelp.textContent = `Ano inválido. O ano não pode ser maior que 2022.`;
+            anoHelp.textContent = `Ano inválido. O ano não pode ser maior que 2024.`;
             anoHelp.style.color="red";
         }
-        else if( parseInt(anoTrimado) < 1900 ){
+        else if( parseInt(anoTrimado) < 1904 ){
              //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputYearHelp
-            anoHelp.textContent = `Ano inválido. O ano não pode ser menor que 1900.`;
+            anoHelp.textContent = `Ano inválido. O ano não pode ser menor que 1904.`;
             anoHelp.style.color="red";
         }
         else{
