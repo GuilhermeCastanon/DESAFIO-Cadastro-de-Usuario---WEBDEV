@@ -8,7 +8,9 @@ var email = document.querySelector("#inputEmail");
 var emailHelp = document.querySelector("#inputEmailHelp"); 
 var senha = document.querySelector("#inputPassword");
 var senhaHelp = document.querySelector("#inputPasswordHelp");
-var passStrenghtMeter = document.querySelector("passStrengthMeter");
+var passStrenghtMeter = document.querySelector("#passStrengthMeter");
+var botao = document.querySelector("#button")
+var inputResult = document.querySelector("#inputResult");
 
 function contarEspacos(str) {
     let contador = 0;
@@ -26,6 +28,31 @@ nome.addEventListener('focusout', validarNome);
 email.addEventListener('focusout', validarEmail);
 senha.addEventListener('focusout', validarSenha);
 
+botao.addEventListener('click', validarTudo);
+function validarTudo(e){
+    var Nome;
+    var Ano;
+    var Email;
+    var Senha;
+
+    if(emailHelp.textContent === ""){
+        Email = 1;
+    }
+    if(nomeHelp.textContent === ""){
+        Nome = 1;
+    }
+    if(anoHelp.textContent === ""){
+        Ano = 1;        
+    }
+    if(senhaHelp.textContent === "moderada" ||senhaHelp.textContent === "fraca"|| senhaHelp.textContent === "forte" ){
+        Senha = 1;
+    }
+
+    if(Nome === 1 && Ano === 1 && Email === 1 && Senha === 1){
+        inputResult.textContent = "Parabéns seus dados foram registrados :)";
+    }
+
+}
 /*declaração tradicional de função validarNome(e)
 'e' é o objeto do tipo evento que contém, alpem de outras propriedades, o objeto que iniciou o evento,
 neste caso o objeto 'nome'
