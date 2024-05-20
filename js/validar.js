@@ -50,6 +50,8 @@ function validarTudo(e){
 
     if(Nome === 1 && Ano === 1 && Email === 1 && Senha === 1){
         inputResult.textContent = "Parabéns seus dados foram registrados :)";
+    } else{
+        inputResult.textContent = "Cadastro invalido"
     }
 
 }
