@@ -30,10 +30,10 @@ senha.addEventListener('focusout', validarSenha);
 
 botao.addEventListener('click', validarTudo);
 function validarTudo(e){
-    var Nome;
-    var Ano;
-    var Email;
-    var Senha;
+    var Nome = 0;
+    var Ano = 0;
+    var Email = 0;
+    var Senha = 0;
 
     if(emailHelp.textContent === ""){
         Email = 1;
@@ -47,11 +47,12 @@ function validarTudo(e){
     if(senhaHelp.textContent === "moderada" ||senhaHelp.textContent === "fraca"|| senhaHelp.textContent === "forte" ){
         Senha = 1;
     }
-
+    
     if(Nome === 1 && Ano === 1 && Email === 1 && Senha === 1){
         inputResult.textContent = "Parabéns seus dados foram registrados :)";
     } else{
-        inputResult.textContent = "Cadastro invalido"
+        
+        inputResult.textContent = "Cadastro invalido";
     }
 
 }
