@@ -8,7 +8,17 @@ var email = document.querySelector("#inputEmail");
 var emailHelp = document.querySelector("#inputEmailHelp"); 
 var senha = document.querySelector("#inputPassword");
 var senhaHelp = document.querySelector("#inputPasswordHelp");
+var passStrenghtMeter = document.querySelector("passStrengthMeter");
 
+function contarEspacos(str) {
+    let contador = 0;
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === ' ') {
+            contador++;
+        }
+    }
+    return contador;
+}
 
 /*declarando o evento listener para o campos de texto do form. 
 Uma vez o foco do campo inputName mude, será chamada a função validarNome*/
@@ -23,11 +33,12 @@ neste caso o objeto 'nome'
 
 function validarNome(e){ 
     //declaração da expressão regular para definir o formato de um nome válido
-    const regexNome = /^[a-zA-Z]+$/;
+    const regexNome = /^[a-zA-Z\s]+$/g;
     
     console.log(e); //impressão em console do objeto evento e
     console.log(e.target.value); //impressão em console do valor do objeto 'nome' que originou o evento   
-    var nameLenght = e.target.value.trim().length;
+    var nameLenght = (e.target.value.trim().length) - contarEspacos(e.target.value.trim());
+    
     if( (e.target.value.trim().match(regexNome)==null) || (nameLenght < 6) || nameLenght > 30){
         //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputNameHelp
         nomeHelp.textContent = "Formato de nome inválido"; 
