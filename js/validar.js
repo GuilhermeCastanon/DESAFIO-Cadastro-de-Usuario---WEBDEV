@@ -122,18 +122,10 @@ function validarSenha(e){
     // Verificar se a senha contém nomeDigitado ou anoDigitado
     var contemNomeOuAno = regexNomeOuAno.test(senha);
 
-    console.log("TESTE SENHA Contém Nome ou Ano:", contemNomeOuAno);
-    console.log("TESTE SENHA Tamanhoinvalido:", tamanhoInvalido);
-    console.log("TESTE SENHA Nao Possui caractere especial:", NaoPossuiCaractereEspecial);
-    console.log("TESTE SENHA Nao Possui numero:", NaoPossuiNumero);
-    console.log("TESTE SENHA Nao Possui letra:", NaoPossuiLetra);
-
-    console.log("TESTE SENHA Ano Digitado:", anoDigitado);
-    console.log("TESTE SENHA Nome Digitado:", nomeDigitado);
-
     if (tamanhoInvalido || NaoPossuiCaractereEspecial || NaoPossuiNumero || NaoPossuiLetra || contemNomeOuAno) {
         //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputSenhaHelp
         senhaHelp.textContent = "Senha invalida"; 
+        passStrenghtMeter.value = 0;
         senhaHelp.style.color="red";
     }
     else{
@@ -154,18 +146,16 @@ function validarSenha(e){
         var possuiLetraMaiuscula = regexLetraMaiuscula.test(senha);
 
 
-        console.log("Possui caractere especial:", possuiCaractereEspecial);
-        console.log("Possui número:", possuiNumero);
-        console.log("Possui letra maiúscula:", possuiLetraMaiuscula);
-
         // Determinar o nível de segurança da senha
         if (comprimento <= 8 && possuiCaractereEspecial && possuiNumero) {
             senhaHelp.textContent = "Senha fraca";
+            passStrenghtMeter.value = 5;
             senhaHelp.style.color="orange";
             
             
         } else if (comprimento > 8 && comprimento <= 12 && possuiCaractereEspecial && possuiNumero && possuiLetraMaiuscula) {
             senhaHelp.textContent = "Senha moderada";
+            passStrenghtMeter.value = 15;
             senhaHelp.style.color="yellow";
         } else if (comprimento > 12 && possuiCaractereEspecial && possuiNumero && possuiLetraMaiuscula) {
             // Verificar se há mais de um caractere especial, número e letra maiúscula
@@ -173,19 +163,19 @@ function validarSenha(e){
             var qtdNumeros = (senha.match(regexNumero) || []).length;
             var qtdLetrasMaiusculas = (senha.match(regexLetraMaiuscula) || []).length;
 
-            console.log("Quantidade de caracteres especiais:", qtdCaracteresEspeciais);
-            console.log("Quantidade de números:", qtdNumeros);
-            console.log("Quantidade de letras maiúsculas:", qtdLetrasMaiusculas);
 
             if (qtdCaracteresEspeciais > 1 && qtdNumeros > 1 && qtdLetrasMaiusculas > 1) {
                 senhaHelp.textContent = "Senha forte";
+                passStrenghtMeter.value = 30;
                 senhaHelp.style.color="green";
             } else{
                 senhaHelp.textContent = "Senha moderada";
+                passStrenghtMeter.value = 15;
                 senhaHelp.style.color="yellow";
             }
         } else{
             senhaHelp.textContent = "Senha fraca";
+            passStrenghtMeter.value = 5;
             senhaHelp.style.color="orange";
         }
     
