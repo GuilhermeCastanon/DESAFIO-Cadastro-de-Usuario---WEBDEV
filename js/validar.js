@@ -44,7 +44,7 @@ function validarTudo(e){
     if(anoHelp.textContent === ""){
         Ano = 1;        
     }
-    if(senhaHelp.textContent === "senha moderada" ||senhaHelp.textContent === "senha fraca"|| senhaHelp.textContent === "senha forte" ){
+    if(senhaHelp.textContent === "Senha modeerada" ||senhaHelp.textContent === "Senha fraca"|| senhaHelp.textContent === "Senha forte" ){
         Senha = 1;
     }
     
@@ -160,12 +160,12 @@ function validarSenha(e){
 
         // Determinar o nível de segurança da senha
         if (comprimento <= 8 && possuiCaractereEspecial && possuiNumero) {
-            senhaHelp.textContent = "senha fraca";
+            senhaHelp.textContent = "Senha fraca";
             senhaHelp.style.color="orange";
             
             
         } else if (comprimento > 8 && comprimento <= 12 && possuiCaractereEspecial && possuiNumero && possuiLetraMaiuscula) {
-            senhaHelp.textContent = "senha moderada";
+            senhaHelp.textContent = "Senha modeerada";
             senhaHelp.style.color="yellow";
         } else if (comprimento > 12 && possuiCaractereEspecial && possuiNumero && possuiLetraMaiuscula) {
             // Verificar se há mais de um caractere especial, número e letra maiúscula
@@ -178,14 +178,14 @@ function validarSenha(e){
             console.log("Quantidade de letras maiúsculas:", qtdLetrasMaiusculas);
 
             if (qtdCaracteresEspeciais > 1 && qtdNumeros > 1 && qtdLetrasMaiusculas > 1) {
-                senhaHelp.textContent = "senha forte";
+                senhaHelp.textContent = "Senha forte";
                 senhaHelp.style.color="green";
             } else{
-                senhaHelp.textContent = "senha moderada";
+                senhaHelp.textContent = "Senha modeerada";
                 senhaHelp.style.color="yellow";
             }
         } else{
-            senhaHelp.textContent = "senha fraca";
+            senhaHelp.textContent = "Senha fraca";
             senhaHelp.style.color="orange";
         }
 
