@@ -44,15 +44,15 @@ function validarTudo(e){
     if(anoHelp.textContent === ""){
         Ano = 1;        
     }
-    if(senhaHelp.textContent === "moderada" ||senhaHelp.textContent === "fraca"|| senhaHelp.textContent === "forte" ){
+    if(senhaHelp.textContent === "senha moderada" ||senhaHelp.textContent === "senha fraca"|| senhaHelp.textContent === "senha forte" ){
         Senha = 1;
     }
     
     if(Nome === 1 && Ano === 1 && Email === 1 && Senha === 1){
-        inputResult.textContent = "Parabéns seus dados foram registrados :)";
+        inputResult.textContent = "Cadastro Valido";
     } else{
         
-        inputResult.textContent = "Cadastro invalido";
+        inputResult.textContent = "Cadastro Invalido";
     }
 
 }
@@ -71,7 +71,7 @@ function validarNome(e){
     
     if( (e.target.value.trim().match(regexNome)==null) || (nameLenght < 6) || nameLenght > 30){
         //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputNameHelp
-        nomeHelp.textContent = "Formato de nome inválido"; 
+        nomeHelp.textContent = "Nome invalido"; 
         nomeHelp.style.color="red";
     }
     else{
@@ -133,7 +133,7 @@ function validarSenha(e){
 
     if (tamanhoInvalido || NaoPossuiCaractereEspecial || NaoPossuiNumero || NaoPossuiLetra || contemNomeOuAno) {
         //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputSenhaHelp
-        senhaHelp.textContent = "Senha inválida"; 
+        senhaHelp.textContent = "Senha invalida"; 
         senhaHelp.style.color="red";
     }
     else{
@@ -160,12 +160,12 @@ function validarSenha(e){
 
         // Determinar o nível de segurança da senha
         if (comprimento <= 8 && possuiCaractereEspecial && possuiNumero) {
-            senhaHelp.textContent = "fraca";
+            senhaHelp.textContent = "senha fraca";
             senhaHelp.style.color="orange";
             
             
         } else if (comprimento > 8 && comprimento <= 12 && possuiCaractereEspecial && possuiNumero && possuiLetraMaiuscula) {
-            senhaHelp.textContent = "moderada";
+            senhaHelp.textContent = "senha moderada";
             senhaHelp.style.color="yellow";
         } else if (comprimento > 12 && possuiCaractereEspecial && possuiNumero && possuiLetraMaiuscula) {
             // Verificar se há mais de um caractere especial, número e letra maiúscula
@@ -178,14 +178,14 @@ function validarSenha(e){
             console.log("Quantidade de letras maiúsculas:", qtdLetrasMaiusculas);
 
             if (qtdCaracteresEspeciais > 1 && qtdNumeros > 1 && qtdLetrasMaiusculas > 1) {
-                senhaHelp.textContent = "forte";
+                senhaHelp.textContent = "senha forte";
                 senhaHelp.style.color="green";
             } else{
-                senhaHelp.textContent = "moderada";
+                senhaHelp.textContent = "senha moderada";
                 senhaHelp.style.color="yellow";
             }
         } else{
-            senhaHelp.textContent = "fraca";
+            senhaHelp.textContent = "senha fraca";
             senhaHelp.style.color="orange";
         }
 
@@ -208,7 +208,7 @@ ano.addEventListener('focusout', () => {
 
     if(anoTrimado.match(regexAno)==null){
         //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputYearHelp
-        anoHelp.textContent = "Formato de ano inválido";
+        anoHelp.textContent = "Ano invalido";
         anoHelp.style.color="red";
     }
     else{
@@ -218,12 +218,12 @@ ano.addEventListener('focusout', () => {
         
         if( parseInt(anoTrimado) > 2024 ){
              //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputYearHelp
-            anoHelp.textContent = `Ano inválido. O ano não pode ser maior que 2024.`;
+            anoHelp.textContent = `Ano invalido.`;
             anoHelp.style.color="red";
         }
         else if( parseInt(anoTrimado) < 1904 ){
              //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputYearHelp
-            anoHelp.textContent = `Ano inválido. O ano não pode ser menor que 1904.`;
+            anoHelp.textContent = `Ano invalido.`;
             anoHelp.style.color="red";
         }
         else{
