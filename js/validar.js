@@ -218,12 +218,12 @@ ano.addEventListener('focusout', () => {
         
         if( parseInt(anoTrimado) > 2024 ){
              //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputYearHelp
-            anoHelp.textContent = `Ano invalido.`;
+            anoHelp.textContent = `Ano invalido`;
             anoHelp.style.color="red";
         }
         else if( parseInt(anoTrimado) < 1904 ){
              //muda o conteúdo e o estilo do objeto nomeHelp que referencia o elemento html com id=inputYearHelp
-            anoHelp.textContent = `Ano invalido.`;
+            anoHelp.textContent = `Ano invalido`;
             anoHelp.style.color="red";
         }
         else{
