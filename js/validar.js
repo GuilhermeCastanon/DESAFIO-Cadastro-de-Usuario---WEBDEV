@@ -44,7 +44,7 @@ function validarTudo(e){
     if(anoHelp.textContent === ""){
         Ano = 1;        
     }
-    if(senhaHelp.textContent === "Senha modeerada" ||senhaHelp.textContent === "Senha fraca"|| senhaHelp.textContent === "Senha forte" ){
+    if(senhaHelp.textContent === "Senha moderada" ||senhaHelp.textContent === "Senha fraca"|| senhaHelp.textContent === "Senha forte" ){
         Senha = 1;
     }
     
@@ -165,7 +165,7 @@ function validarSenha(e){
             
             
         } else if (comprimento > 8 && comprimento <= 12 && possuiCaractereEspecial && possuiNumero && possuiLetraMaiuscula) {
-            senhaHelp.textContent = "Senha modeerada";
+            senhaHelp.textContent = "Senha moderada";
             senhaHelp.style.color="yellow";
         } else if (comprimento > 12 && possuiCaractereEspecial && possuiNumero && possuiLetraMaiuscula) {
             // Verificar se há mais de um caractere especial, número e letra maiúscula
@@ -181,17 +181,15 @@ function validarSenha(e){
                 senhaHelp.textContent = "Senha forte";
                 senhaHelp.style.color="green";
             } else{
-                senhaHelp.textContent = "Senha modeerada";
+                senhaHelp.textContent = "Senha moderada";
                 senhaHelp.style.color="yellow";
             }
         } else{
             senhaHelp.textContent = "Senha fraca";
             senhaHelp.style.color="orange";
         }
-
     
     }
-       
 }
   
 /*declarando o evento listener para o campos de texto do form. 
