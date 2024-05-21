@@ -9,7 +9,7 @@ var emailHelp = document.querySelector("#inputEmailHelp");
 var senha = document.querySelector("#inputPassword");
 var senhaHelp = document.querySelector("#inputPasswordHelp");
 var passStrenghtMeter = document.querySelector("#passStrengthMeter");
-var botao = document.querySelector("#button")
+var botao = document.querySelector("#submitButton")
 var inputResult = document.querySelector("#inputResult");
 
 function contarEspacos(str) {
